@@ -1,0 +1,56 @@
+﻿@model IEnumerable<OnlineVotingAndroid.Models.Candidate>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Candidates")" class="btn btn-outline-primary btn-lg">Create New</a>
+</p>
+</p>
+<div class="table-responsive">
+    <table id="example" class="display" style="min-width: 845px">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position.PositionName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Students.StudentID)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position.PositionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Students.StudentID)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CandidateID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CandidateID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CandidateID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position.PositionName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Students.StudentID)
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

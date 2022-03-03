@@ -1,0 +1,65 @@
+﻿@model IEnumerable<OnlineVotingAndroid.Models.Position>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Positions")" class="btn btn-outline-primary btn-lg">Create New</a>
+</p>
+<div class="table-responsive">
+    <table id="example" class="display" style="min-width: 845px">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Election.ElectionName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PositionName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Count)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Election.ElectionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PositionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PositionId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.PositionId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PositionId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Election.ElectionName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PositionName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Count)
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>
