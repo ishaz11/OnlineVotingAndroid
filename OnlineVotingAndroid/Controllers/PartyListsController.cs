@@ -10,108 +10,109 @@ using OnlineVotingAndroid.Models;
 
 namespace OnlineVotingAndroid.Controllers
 {
-    public class StudentsController : Controller
+    public class PartyListsController : Controller
     {
         private OnlineVotingDbContext db = new OnlineVotingDbContext();
 
-        // GET: Students
+        // GET: PartyLists
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            return View(db.PartyLists.ToList());
         }
 
-        // GET: Students/Details/5
+        // GET: PartyLists/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Students students = db.Students.Find(id);
-            if (students == null)
+            PartyList partyList = db.PartyLists.Find(id);
+            if (partyList == null)
             {
                 return HttpNotFound();
             }
-            return View(students);
+            return View(partyList);
         }
 
-        // GET: Students/Create
+        // GET: PartyLists/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Students/Create
+        // POST: PartyLists/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Students students)
+        public ActionResult Create([Bind(Include = "PartyListID,PartyListName,IsActive,isEnable")] PartyList partyList)
         {
-            students.Password = "1234";
+            partyList.isEnable = true;
+            partyList.IsActive = true;
             if (ModelState.IsValid)
             {
-                db.Students.Add(students);
+                db.PartyLists.Add(partyList);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(students);
+            return View(partyList);
         }
 
-        // GET: Students/Edit/5
+        // GET: PartyLists/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Students students = db.Students.Find(id);
-            if (students == null)
+            PartyList partyList = db.PartyLists.Find(id);
+            if (partyList == null)
             {
                 return HttpNotFound();
             }
-            return View(students);
+            return View(partyList);
         }
 
-        // POST: Students/Edit/5
+        // POST: PartyLists/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Students students)
+        public ActionResult Edit([Bind(Include = "PartyListID,PartyListName,IsActive,isEnable")] PartyList partyList)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(students).State = EntityState.Modified;
+                db.Entry(partyList).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(students);
+            return View(partyList);
         }
 
-        // GET: Students/Delete/5
+        // GET: PartyLists/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Students students = db.Students.Find(id);
-            if (students == null)
+            PartyList partyList = db.PartyLists.Find(id);
+            if (partyList == null)
             {
                 return HttpNotFound();
             }
-            return View(students);
+            return View(partyList);
         }
 
-        // POST: Students/Delete/5
+        // POST: PartyLists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Students students = db.Students.Find(id);
-            db.Students.Remove(students);
+            PartyList partyList = db.PartyLists.Find(id);
+            db.PartyLists.Remove(partyList);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

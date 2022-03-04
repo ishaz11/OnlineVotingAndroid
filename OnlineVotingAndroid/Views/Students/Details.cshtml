@@ -19,27 +19,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+           Full Name
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.FirstName),  @Html.DisplayFor(model => model.LastName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
+            @Html.DisplayFor(model => model.Date, new { htmlAttributes = new { @Value = Model.Date.ToString("yyyy-MM-dd") } })
         </dd>
 
     </dl>

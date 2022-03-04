@@ -1,0 +1,67 @@
+﻿@model IEnumerable<OnlineVotingAndroid.Models.PartyList>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+    <table id="example" class="display" style="min-width: 845px">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PartyListName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.isEnable)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartyListName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.isEnable)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PartyListID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.PartyListID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PartyListID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PartyListName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.isEnable)
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>
+

@@ -130,6 +130,8 @@
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Controllers\ElectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PartyListMembersController.cs" />
+    <Compile Include="Controllers\PartyListsController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\SamplePersonsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
@@ -159,6 +161,10 @@
     <Compile Include="Migrations\202203031738313_removerolesample.cs" />
     <Compile Include="Migrations\202203031738313_removerolesample.designer.cs">
       <DependentUpon>202203031738313_removerolesample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203041104473_migration add Party list to party list member.cs" />
+    <Compile Include="Migrations\202203041104473_migration add Party list to party list member.designer.cs">
+      <DependentUpon>202203041104473_migration add Party list to party list member.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidate.cs" />
@@ -4236,6 +4242,16 @@
     <Content Include="Views\SamplePersons\Details.cshtml" />
     <Content Include="Views\SamplePersons\Edit.cshtml" />
     <Content Include="Views\SamplePersons\Index.cshtml" />
+    <Content Include="Views\PartyLists\Create.cshtml" />
+    <Content Include="Views\PartyLists\Delete.cshtml" />
+    <Content Include="Views\PartyLists\Details.cshtml" />
+    <Content Include="Views\PartyLists\Edit.cshtml" />
+    <Content Include="Views\PartyLists\Index.cshtml" />
+    <Content Include="Views\PartyListMembers\Create.cshtml" />
+    <Content Include="Views\PartyListMembers\Delete.cshtml" />
+    <Content Include="Views\PartyListMembers\Details.cshtml" />
+    <Content Include="Views\PartyListMembers\Edit.cshtml" />
+    <Content Include="Views\PartyListMembers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4271,6 +4287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203031738313_removerolesample.resx">
       <DependentUpon>202203031738313_removerolesample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203041104473_migration add Party list to party list member.resx">
+      <DependentUpon>202203041104473_migration add Party list to party list member.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

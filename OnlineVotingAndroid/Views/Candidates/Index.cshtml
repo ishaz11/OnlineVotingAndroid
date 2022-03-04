@@ -15,10 +15,10 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Position.PositionName)
+                    Running For
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Students.StudentID)
+                   Student Name
                 </th>
                 <th></th>
             </tr>
@@ -31,7 +31,7 @@
                         @Html.DisplayFor(modelItem => item.Position.PositionName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Students.StudentID)
+                        @Html.DisplayFor(modelItem => item.Students.LastName),  @Html.DisplayFor(modelItem => item.Students.FirstName)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.CandidateID }) |

@@ -1,0 +1,42 @@
+﻿@model OnlineVotingAndroid.Models.PartyListMember
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PartyListMember</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PartyLists.PartyListName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartyLists.PartyListName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Students.StudentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Students.StudentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isOfficer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isOfficer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -16,12 +16,12 @@
             <thead>
                 <tr>
                     <th>
-                        Student Name
+                        Running For
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Students.StudentID)
+                        Student Name
                     </th>
-                    <th></th>
+                    @*<th></th>*@
                 </tr>
             </thead>
             <tbody>
@@ -32,13 +32,13 @@
                             @Html.DisplayFor(modelItem => item.Position.PositionName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Students.StudentID)
+                            @Html.DisplayFor(modelItem => item.Students.LastName),  @Html.DisplayFor(modelItem => item.Students.FirstName)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.CandidateID }) |
                             @Html.ActionLink("Details", "Details", new { id = item.CandidateID }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.CandidateID })
-                        </td>
+                        </td>*@
                     </tr>
                 }
             </tbody>

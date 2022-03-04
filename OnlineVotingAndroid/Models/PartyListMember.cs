@@ -12,6 +12,10 @@ namespace OnlineVotingAndroid.Models
         [Key]
         public int Id { get; set; }
 
+        public int? PartyListID { get; set; }
+        [ForeignKey("PartyListID")]
+        public virtual PartyList PartyLists { get; set; }
+
         public int? StudentID { get; set; }
         [ForeignKey("StudentID")]
         public virtual Students Students { get; set; }
