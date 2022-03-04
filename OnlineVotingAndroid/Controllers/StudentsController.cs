@@ -46,7 +46,7 @@ namespace OnlineVotingAndroid.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,StudentID,FirstName,LastName,Password")] Students students)
+        public ActionResult Create(Students students)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace OnlineVotingAndroid.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,StudentID,FirstName,LastName,Password")] Students students)
+        public ActionResult Edit(Students students)
         {
             if (ModelState.IsValid)
             {

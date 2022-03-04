@@ -29,6 +29,7 @@ namespace OnlineVotingAndroid.Models
 
         [Display(Name = "Date of Birth")]
         [Required(ErrorMessage = "Required")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Date { get; set; }
 
         [Display(Name = "Year")]
