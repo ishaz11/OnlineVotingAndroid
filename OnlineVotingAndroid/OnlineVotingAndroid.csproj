@@ -166,6 +166,10 @@
     <Compile Include="Migrations\202203041104473_migration add Party list to party list member.designer.cs">
       <DependentUpon>202203041104473_migration add Party list to party list member.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203271715105_add-photo.cs" />
+    <Compile Include="Migrations\202203271715105_add-photo.designer.cs">
+      <DependentUpon>202203271715105_add-photo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\Election.cs" />
@@ -175,6 +179,7 @@
     <Compile Include="Models\Platform.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\SamplePerson.cs" />
+    <Compile Include="Models\StudentPhoto.cs" />
     <Compile Include="Models\Students.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vote.cs" />
@@ -4255,6 +4260,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -4290,6 +4296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203041104473_migration add Party list to party list member.resx">
       <DependentUpon>202203041104473_migration add Party list to party list member.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203271715105_add-photo.resx">
+      <DependentUpon>202203271715105_add-photo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -37,5 +38,11 @@ namespace OnlineVotingAndroid.Models
         public string YearnSection { get; set; }
 
         public bool isEnable { get; set; }
+
+        [Display(Name = "Photo")]
+        public string Photo { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase File1 { get; set; }
     }
 }
