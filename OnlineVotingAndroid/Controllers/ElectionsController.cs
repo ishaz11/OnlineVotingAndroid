@@ -50,6 +50,20 @@ namespace OnlineVotingAndroid.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (election.IsActive == true)
+                {
+                    var ElectionList = (from x in db.Elections
+                                        where x.IsActive == true
+                                        select x).ToList();
+                    foreach (Election e in ElectionList)
+                    {
+                        e.IsActive = false;
+                    }
+                    db.SaveChanges();
+                }
+                
+                
+                                   
                 db.Elections.Add(election);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +96,18 @@ namespace OnlineVotingAndroid.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (election.IsActive == true)
+                {
+                    var ElectionList = (from x in db.Elections
+                                        where x.IsActive == true
+                                        select x).ToList();
+                    foreach (Election e in ElectionList)
+                    {
+                        e.IsActive = false;
+                    }
+                    
+                }
+
                 db.Entry(election).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

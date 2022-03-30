@@ -16,7 +16,7 @@ namespace OnlineVotingAndroid.Models
         [Display(Name = "Election")]
         public string ElectionName { get; set; }
 
-        [Display(Name = "Is Active?")]
+        [Display(Name = "Set this as current active election")]
         public bool IsActive { get; set; } = false;
     }
 }

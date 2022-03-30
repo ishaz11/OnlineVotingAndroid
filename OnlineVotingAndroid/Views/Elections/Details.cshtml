@@ -19,12 +19,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
+            Curent Status
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
+
+        @if (Model.IsActive == true)
+        {
+            <dd>
+                Active
+            </dd>
+        }
+        else
+        {
+            <dd>
+                Not Active
+            </dd>
+        }
+
+
 
     </dl>
 </div>

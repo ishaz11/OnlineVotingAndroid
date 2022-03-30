@@ -17,9 +17,9 @@
                     @Html.DisplayNameFor(model => model.ElectionName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
+                    Status
                 </th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +31,16 @@
                         @Html.DisplayFor(modelItem => item.ElectionName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
+                        @*@Html.DisplayFor(modelItem => item.IsActive)*@
+                        @if (item.IsActive == true)
+                        {
+                            <span class="badge badge-success">Currently Active</span>
+                        }
+
+                        else {
+                        <span class="badge badge-danger">Not Active</span>
+                        }
+
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.ElectionID }) |
@@ -47,9 +56,9 @@
                     @Html.DisplayNameFor(model => model.ElectionName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
+                    Status
                 </th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </tfoot>
 
