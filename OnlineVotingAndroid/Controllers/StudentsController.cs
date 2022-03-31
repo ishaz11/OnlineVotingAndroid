@@ -116,6 +116,12 @@ namespace OnlineVotingAndroid.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ImportStudent()
+        {
+
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -4,31 +4,53 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="content-body">
+    <div class="container-fluid">
 
-<div>
-    <h4>Candidate</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Position.PositionName)
-        </dt>
+        <!-- row -->
+        <div class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.Position.PositionName)
-        </dd>
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Horizontal Form</h4>
+                        </div>*@
+                    <div class="card-body">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Students.StudentID)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Students.StudentID)
-        </dd>
+                        <h2>Details</h2>
 
-    </dl>
+                        <div>
+                            <h4>Candidate</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Position.PositionName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Position.PositionName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Students.StudentID)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Students.StudentID)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.CandidateID }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CandidateID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

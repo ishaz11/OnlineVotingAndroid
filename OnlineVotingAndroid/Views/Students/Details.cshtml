@@ -3,40 +3,61 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="content-body">
+    <div class="container-fluid">
 
-<h2>Details</h2>
+        <!-- row -->
+        <div class="row">
 
-<div>
-    <h4>Students</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.StudentID)
-        </dt>
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Horizontal Form</h4>
+                        </div>*@
+                    <div class="card-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.StudentID)
-        </dd>
 
-        <dt>
-           Full Name
-        </dt>
+                        <h2>Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName),  @Html.DisplayFor(model => model.LastName)
-        </dd>
+                        <div>
+                            <h4>Students</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.StudentID)
+                                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.StudentID)
+                                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date, new { htmlAttributes = new { @Value = Model.Date.ToString("yyyy-MM-dd") } })
-        </dd>
+                                <dt>
+                                    Full Name
+                                </dt>
 
-    </dl>
+                                <dd>
+                                    @Html.DisplayFor(model => model.FirstName),  @Html.DisplayFor(model => model.LastName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Date, new { htmlAttributes = new { @Value = Model.Date.ToString("yyyy-MM-dd") } })
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

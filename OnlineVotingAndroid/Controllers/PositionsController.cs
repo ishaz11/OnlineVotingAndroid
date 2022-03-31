@@ -17,7 +17,7 @@ namespace OnlineVotingAndroid.Controllers
         // GET: Positions
         public ActionResult Index()
         {
-            var positions = db.Positions.Include(p => p.Election);
+            var positions = db.Positions.Include(p => p.Election).Where(p => p.Election.IsActive == true);
             return View(positions.ToList());
         }
 

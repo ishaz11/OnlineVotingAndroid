@@ -4,63 +4,86 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="content-body">
+    <div class="container-fluid">
 
-<p>
-    <a href="@Url.Action("Create", "Elections")" class="btn btn-outline-primary btn-lg">Create New</a>
-</p>
-<div class="table-responsive">
-    <table id="example" class="display" style="min-width: 845px">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ElectionName)
-                </th>
-                <th>
-                    Status
-                </th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
+        <!-- row -->
+        <div class="row">
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ElectionName)
-                    </td>
-                    <td>
-                        @*@Html.DisplayFor(modelItem => item.IsActive)*@
-                        @if (item.IsActive == true)
-                        {
-                            <span class="badge badge-success">Currently Active</span>
-                        }
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Horizontal Form</h4>
+                        </div>*@
+                    <div class="card-body">
 
-                        else {
-                        <span class="badge badge-danger">Not Active</span>
-                        }
 
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ElectionID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ElectionID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ElectionID })
-                    </td>
-                </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ElectionName)
-                </th>
-                <th>
-                    Status
-                </th>
-                <th>Action</th>
-            </tr>
-        </tfoot>
+                        <h2>Index</h2>
 
-    </table>
+                        <p>
+                            <a href="@Url.Action("Create", "Elections")" class="btn btn-outline-primary btn-lg">Create New</a>
+                        </p>
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ElectionName)
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ElectionName)
+                                            </td>
+                                            <td>
+                                                @*@Html.DisplayFor(modelItem => item.IsActive)*@
+                                                @if (item.IsActive == true)
+                                                {
+                                                    <span class="badge badge-success">Currently Active</span>
+                                                }
+
+                                                else
+                                                {
+                                                    <span class="badge badge-danger">Not Active</span>
+                                                }
+
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.ElectionID }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.ElectionID }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.ElectionID })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ElectionName)
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

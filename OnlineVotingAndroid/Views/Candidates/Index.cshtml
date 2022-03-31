@@ -4,53 +4,75 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="content-body">
+    <div class="container-fluid">
 
-<p>
-    <a href="@Url.Action("Create", "Candidates")" class="btn btn-outline-primary btn-lg">Create New</a>
-</p>
-</p>
-<div class="table-responsive">
-    <table id="example" class="display" style="min-width: 845px">
-        <thead>
-            <tr>
-                <th>
-                    Running For
-                </th>
-                <th>
-                   Student Name
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Position.PositionName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Students.LastName),  @Html.DisplayFor(modelItem => item.Students.FirstName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.CandidateID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CandidateID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.CandidateID })
-                    </td>
-                </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Position.PositionName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Students.StudentID)
-                </th>
-                <th></th>
-            </tr>
-        </tfoot>
-    </table>
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Horizontal Form</h4>
+                        </div>*@
+                    <div class="card-body">
+
+
+                        <h2>Index</h2>
+
+                        <p>
+                            <a href="@Url.Action("Create", "Candidates")" class="btn btn-outline-primary btn-lg">Create New</a>
+                        </p>
+                        </p>
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Running For
+                                        </th>
+                                        <th>
+                                            Student Name
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Position.PositionName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Students.LastName),  @Html.DisplayFor(modelItem => item.Students.FirstName)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.CandidateID }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.CandidateID }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.CandidateID })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Position.PositionName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Students.StudentID)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
