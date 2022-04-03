@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using OnlineVotingAndroid.Models;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace OnlineVotingAndroid.Controllers
 {
@@ -120,6 +122,55 @@ namespace OnlineVotingAndroid.Controllers
         {
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult ImportStudent(HttpPostedFileBase excelfile)
+        {
+            if (excelfile.ContentLength == 0 ||excelfile == null)
+            {
+                ViewBag.Error = "Please select a valid excel file";
+                return View();
+            }
+            else
+            {
+                if (excelfile.FileName.EndsWith("xls") || excelfile.FileName.EndsWith("xlsx"))
+                {
+                    string path = Server.MapPath("/Upload/" + excelfile.FileName);
+                    
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                    excelfile.SaveAs(path);
+
+                    Excel.Application application = new Excel.Application();
+                    Excel.Workbook workbook = application.Workbooks.Open(path);
+                    Excel.Worksheet worksheet = workbook.ActiveSheet;
+                    Excel.Range range = worksheet.UsedRange;
+
+                    List<Students> students = new List<Students>();
+                    for (int row = 2; row <= range.Rows.Count; row++)
+                    {
+                        Students student = new Students();
+                        student.StudentID = ((Excel.Range)range.Cells[row, 1]).Text;
+                        student.FirstName = ((Excel.Range)range.Cells[row, 2]).Text;
+                        student.LastName = ((Excel.Range)range.Cells[row, 3]).Text;
+                        student.Date = DateTime.Now;
+                        student.YearnSection = ((Excel.Range)range.Cells[row, 4]).Text;
+                        students.Add(student);
+                        db.Students.Add(student);
+                        db.SaveChanges();
+                    }
+
+                    return View();
+                }
+                else
+                {
+                    ViewBag.Error = "Something went wrong";
+                    return View("Index");
+                }
+            }
         }
 
         protected override void Dispose(bool disposing)

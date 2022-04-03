@@ -3,59 +3,80 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="content-body">
+    <div class="container-fluid">
 
-<h2>Index</h2>
+        <!-- row -->
+        <div class="row">
 
-<p>
-    <a href="@Url.Action("Create", "PartyListMembers")" class="btn btn-outline-primary btn-lg">Create New</a>
-</p>
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Horizontal Form</h4>
+                        </div>*@
+                    <div class="card-body">
 
-<div class="table-responsive">
-    <table id="example" class="display" style="min-width: 845px">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PartyLists.PartyListName)
-                </th>
-                <th>
-                    Student Name
-                </th>
-                
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PartyLists.PartyListName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Students.LastName), @Html.DisplayFor(modelItem => item.Students.FirstName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PartyLists.PartyListName)
-                </th>
-                <th>
-                    Student Name
-                </th>
-               
-                <th>Action</th>
-            </tr>
-        </tfoot>
+                        <h2>Index</h2>
 
-    </table>
+                        <p>
+                            <a href="@Url.Action("Create", "PartyListMembers")" class="btn btn-outline-primary btn-lg">Create New</a>
+                        </p>
+
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PartyLists.PartyListName)
+                                        </th>
+                                        <th>
+                                            Student Name
+                                        </th>
+
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PartyLists.PartyListName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Students.LastName), @Html.DisplayFor(modelItem => item.Students.FirstName)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PartyLists.PartyListName)
+                                        </th>
+                                        <th>
+                                            Student Name
+                                        </th>
+
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+
+                            </table>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-

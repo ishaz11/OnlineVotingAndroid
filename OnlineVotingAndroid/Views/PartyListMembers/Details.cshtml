@@ -3,40 +3,61 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="content-body">
+    <div class="container-fluid">
 
-<h2>Details</h2>
+        <!-- row -->
+        <div class="row">
 
-<div>
-    <h4>PartyListMember</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PartyLists.PartyListName)
-        </dt>
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Horizontal Form</h4>
+                        </div>*@
+                    <div class="card-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.PartyLists.PartyListName)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Students.StudentID)
-        </dt>
+                        <h2>Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Students.StudentID)
-        </dd>
+                        <div>
+                            <h4>PartyListMember</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PartyLists.PartyListName)
+                                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.isOfficer)
-        </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PartyLists.PartyListName)
+                                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.isOfficer)
-        </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Students.StudentID)
+                                </dt>
 
-    </dl>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Students.StudentID)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.isOfficer)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.isOfficer)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

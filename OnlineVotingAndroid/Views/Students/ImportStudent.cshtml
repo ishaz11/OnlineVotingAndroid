@@ -9,19 +9,32 @@
         <!-- row -->
         <div class="row">
 
-            <div class="col-xl-12 col-xxl-12">
+
+            <div class="col-lg-12">
                 <div class="card">
-                    @*<div class="card-header">
-                            <h4 class="card-title">Horizontal Form</h4>
-                        </div>*@
                     <div class="card-body">
-                       
+                        <h4 class="card-title">Import File</h4>
+                        <div class="basic-form">
+                            @using (Html.BeginForm("ImportStudent", "Students", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-inline" }))
+                            {
+                               
+                            <div class="form-group">
+
+                                @Html.Raw(ViewBag.Error)
+
+                                <input type="file" class="form-control-file" name="excelfile">
 
 
+                                <button type="submit" class="btn mb-1 btn-primary">Submit</button>
+                            </div>
+                            }
+
+                        </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
-</div>
 
