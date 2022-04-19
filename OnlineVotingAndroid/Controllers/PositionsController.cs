@@ -52,6 +52,7 @@ namespace OnlineVotingAndroid.Controllers
         {
             if (ModelState.IsValid)
             {
+                position.ElectionID = db.Elections.Where(x=> x.IsActive == true).Select(x=>x.ElectionID).FirstOrDefault();
                 db.Positions.Add(position);
                 db.SaveChanges();
                 return RedirectToAction("Index");

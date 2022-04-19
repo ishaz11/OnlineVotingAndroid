@@ -17,7 +17,7 @@ namespace OnlineVotingAndroid.Controllers
         // GET: Candidates
         public ActionResult Index()
         {
-            var candidates = db.Candidates.Include(c => c.Position).Include(c => c.Students);
+            var candidates = db.Candidates.Include(c => c.Position).Include(c => c.Students).Where(c => c.Position.Election.IsActive == true);
             return View(candidates.ToList());
         }
 
@@ -41,7 +41,8 @@ namespace OnlineVotingAndroid.Controllers
         {
             var position = from x in db.Positions
                            where x.Election.IsActive == true
-                           select new {
+                           select new
+                           {
                                ID = x.PositionId,
                                Name = x.PositionName
                            };
@@ -68,6 +69,7 @@ namespace OnlineVotingAndroid.Controllers
         {
             if (ModelState.IsValid)
             {
+                //candidate.PositionId = db.Positions.Where(x => x.Election.IsActive == true).Select(x => x.PositionId).FirstOrDefault();
                 db.Candidates.Add(candidate);
                 db.SaveChanges();
                 return RedirectToAction("Index");

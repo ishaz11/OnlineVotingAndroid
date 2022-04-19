@@ -44,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -144,6 +145,7 @@
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\SamplePersonsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,6 +201,49 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ContentLogin\css\main.css" />
+    <Content Include="ContentLogin\css\util.css" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="ContentLogin\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="ContentLogin\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <Content Include="ContentLogin\fonts\montserrat\OFL.txt" />
+    <Content Include="ContentLogin\images\1621632464910.jpg" />
+    <Content Include="ContentLogin\images\bg-01.jpg" />
+    <Content Include="ContentLogin\images\icons\favicon.ico" />
+    <Content Include="ContentLogin\js\main.js" />
+    <Content Include="ContentLogin\vendor\animate\animate.css" />
+    <Content Include="ContentLogin\vendor\animsition\css\animsition.css" />
+    <Content Include="ContentLogin\vendor\animsition\css\animsition.min.css" />
+    <Content Include="ContentLogin\vendor\animsition\js\animsition.js" />
+    <Content Include="ContentLogin\vendor\animsition\js\animsition.min.js" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="ContentLogin\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="ContentLogin\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="ContentLogin\vendor\bootstrap\js\popper.js" />
+    <Content Include="ContentLogin\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="ContentLogin\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="ContentLogin\vendor\countdowntime\countdowntime.js" />
+    <Content Include="ContentLogin\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="ContentLogin\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="ContentLogin\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="ContentLogin\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="ContentLogin\vendor\daterangepicker\moment.js" />
+    <Content Include="ContentLogin\vendor\daterangepicker\moment.min.js" />
+    <Content Include="ContentLogin\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="ContentLogin\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="ContentLogin\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="ContentLogin\vendor\select2\select2.css" />
+    <Content Include="ContentLogin\vendor\select2\select2.js" />
+    <Content Include="ContentLogin\vendor\select2\select2.min.css" />
+    <Content Include="ContentLogin\vendor\select2\select2.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -4208,6 +4253,86 @@
     <Content Include="MyLayout\vendor\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="MyLayout\vendor\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="MyLayout\vendor\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="ContentLogin\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="ContentLogin\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="ContentLogin\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="ContentLogin\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="ContentLogin\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-Black.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-BlackItalic.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-ExtraBold.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-LightItalic.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-MediumItalic.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-Thin.ttf" />
+    <Content Include="ContentLogin\fonts\montserrat\Montserrat-ThinItalic.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="ContentLogin\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4271,6 +4396,12 @@
     <Content Include="Views\PartyListMembers\Edit.cshtml" />
     <Content Include="Views\PartyListMembers\Index.cshtml" />
     <Content Include="Views\Students\ImportStudent.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
