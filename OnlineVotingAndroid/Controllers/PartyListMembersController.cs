@@ -43,8 +43,8 @@ namespace OnlineVotingAndroid.Controllers
                           orderby x.StudentID
                           select new
                           {
-                              ID = x.id,
-                              Name = x.StudentID + " " + x.LastName + ", " + x.FirstName
+                              ID = x.StudentID,
+                              Name = x.StudentSchoolID + " " + x.LastName + ", " + x.FirstName
                           };
 
             ViewBag.PartyListID = new SelectList(db.PartyLists, "PartyListID", "PartyListName");
@@ -84,7 +84,7 @@ namespace OnlineVotingAndroid.Controllers
                 return HttpNotFound();
             }
             ViewBag.PartyListID = new SelectList(db.PartyLists, "PartyListID", "PartyListName", partyListMember.PartyListID);
-            ViewBag.StudentID = new SelectList(db.Students, "id", "StudentID", partyListMember.StudentID);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentID", partyListMember.StudentID);
             return View(partyListMember);
         }
 
@@ -97,12 +97,13 @@ namespace OnlineVotingAndroid.Controllers
         {
             if (ModelState.IsValid)
             {
+                var data = partyListMember;
                 db.Entry(partyListMember).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Students");
             }
             ViewBag.PartyListID = new SelectList(db.PartyLists, "PartyListID", "PartyListName", partyListMember.PartyListID);
-            ViewBag.StudentID = new SelectList(db.Students, "id", "StudentID", partyListMember.StudentID);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentID", partyListMember.StudentID);
             return View(partyListMember);
         }
 

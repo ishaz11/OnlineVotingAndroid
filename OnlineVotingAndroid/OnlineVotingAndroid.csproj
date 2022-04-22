@@ -149,41 +149,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202203011631494_migration1.cs" />
-    <Compile Include="Migrations\202203011631494_migration1.designer.cs">
-      <DependentUpon>202203011631494_migration1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203020746522_add postion name.cs" />
-    <Compile Include="Migrations\202203020746522_add postion name.designer.cs">
-      <DependentUpon>202203020746522_add postion name.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203020754450_add candidate and vote.cs" />
-    <Compile Include="Migrations\202203020754450_add candidate and vote.designer.cs">
-      <DependentUpon>202203020754450_add candidate and vote.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203031529505_update student, add Partylist partylistmembers platform.cs" />
-    <Compile Include="Migrations\202203031529505_update student, add Partylist partylistmembers platform.designer.cs">
-      <DependentUpon>202203031529505_update student, add Partylist partylistmembers platform.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203031531350_update student, add Partylist partylistmembers platform2.cs" />
-    <Compile Include="Migrations\202203031531350_update student, add Partylist partylistmembers platform2.designer.cs">
-      <DependentUpon>202203031531350_update student, add Partylist partylistmembers platform2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203031738313_removerolesample.cs" />
-    <Compile Include="Migrations\202203031738313_removerolesample.designer.cs">
-      <DependentUpon>202203031738313_removerolesample.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203041104473_migration add Party list to party list member.cs" />
-    <Compile Include="Migrations\202203041104473_migration add Party list to party list member.designer.cs">
-      <DependentUpon>202203041104473_migration add Party list to party list member.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202203271715105_add-photo.cs" />
-    <Compile Include="Migrations\202203271715105_add-photo.designer.cs">
-      <DependentUpon>202203271715105_add-photo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204022027381_add year and section.cs" />
-    <Compile Include="Migrations\202204022027381_add year and section.designer.cs">
-      <DependentUpon>202204022027381_add year and section.cs</DependentUpon>
+    <Compile Include="Migrations\202204211527295_migration1.cs" />
+    <Compile Include="Migrations\202204211527295_migration1.designer.cs">
+      <DependentUpon>202204211527295_migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidate.cs" />
@@ -196,6 +164,7 @@
     <Compile Include="Models\SamplePerson.cs" />
     <Compile Include="Models\StudentPhoto.cs" />
     <Compile Include="Models\Students.cs" />
+    <Compile Include="Models\StudentsAndParty.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4422,32 +4391,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202203011631494_migration1.resx">
-      <DependentUpon>202203011631494_migration1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203020746522_add postion name.resx">
-      <DependentUpon>202203020746522_add postion name.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203020754450_add candidate and vote.resx">
-      <DependentUpon>202203020754450_add candidate and vote.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203031529505_update student, add Partylist partylistmembers platform.resx">
-      <DependentUpon>202203031529505_update student, add Partylist partylistmembers platform.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203031531350_update student, add Partylist partylistmembers platform2.resx">
-      <DependentUpon>202203031531350_update student, add Partylist partylistmembers platform2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203031738313_removerolesample.resx">
-      <DependentUpon>202203031738313_removerolesample.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203041104473_migration add Party list to party list member.resx">
-      <DependentUpon>202203041104473_migration add Party list to party list member.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202203271715105_add-photo.resx">
-      <DependentUpon>202203271715105_add-photo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204022027381_add year and section.resx">
-      <DependentUpon>202204022027381_add year and section.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202204211527295_migration1.resx">
+      <DependentUpon>202204211527295_migration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

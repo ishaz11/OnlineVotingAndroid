@@ -19,7 +19,20 @@ namespace OnlineVotingAndroid.Controllers
         // GET: Students
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            var students = db.Students.ToList();
+            var partylistMember = db.PartyListMembers.ToList();
+            var partylist = db.PartyLists.ToList();
+
+            var studentsAndparty = from s in students
+                                   join ptm in partylistMember on s.StudentID equals ptm.StudentID into table1
+                                   from tbl in table1.DefaultIfEmpty()
+                                   select new StudentsAndParty
+                                   {
+                                       students = s,
+                                       party = tbl == null || tbl.PartyLists.PartyListName == null ? "N/A" : tbl.PartyLists.PartyListName,
+                                       partyMemberID = tbl == null || tbl.Id == 0 ? 0 : tbl.Id
+                                   };
+            return View(studentsAndparty);
         }
 
         // GET: Students/Details/5
@@ -127,7 +140,7 @@ namespace OnlineVotingAndroid.Controllers
         [HttpPost]
         public ActionResult ImportStudent(HttpPostedFileBase excelfile)
         {
-            if (excelfile.ContentLength == 0 ||excelfile == null)
+            if (excelfile.ContentLength == 0 || excelfile == null)
             {
                 ViewBag.Error = "Please select a valid excel file";
                 return View();
@@ -137,7 +150,7 @@ namespace OnlineVotingAndroid.Controllers
                 if (excelfile.FileName.EndsWith("xls") || excelfile.FileName.EndsWith("xlsx"))
                 {
                     string path = Server.MapPath("/Upload/" + excelfile.FileName);
-                    
+
                     if (System.IO.File.Exists(path))
                     {
                         System.IO.File.Delete(path);
@@ -153,7 +166,7 @@ namespace OnlineVotingAndroid.Controllers
                     for (int row = 2; row <= range.Rows.Count; row++)
                     {
                         Students student = new Students();
-                        student.StudentID = ((Excel.Range)range.Cells[row, 1]).Text;
+                        student.StudentSchoolID = ((Excel.Range)range.Cells[row, 1]).Text;
                         student.FirstName = ((Excel.Range)range.Cells[row, 2]).Text;
                         student.LastName = ((Excel.Range)range.Cells[row, 3]).Text;
                         student.Date = DateTime.Now;

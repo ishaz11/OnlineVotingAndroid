@@ -7,13 +7,13 @@ namespace OnlineVotingAndroid.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class addcandidateandvote : IMigrationMetadata
+    public sealed partial class migration1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addcandidateandvote));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(migration1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202203020754450_add candidate and vote"; }
+            get { return "202204211527295_migration1"; }
         }
         
         string IMigrationMetadata.Source

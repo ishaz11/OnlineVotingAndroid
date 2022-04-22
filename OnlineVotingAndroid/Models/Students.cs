@@ -10,11 +10,11 @@ namespace OnlineVotingAndroid.Models
     public class Students
     {
         [Key]
-        public int id { get; set; }
+        public int StudentID { get; set; }
 
-        [Display(Name = "Student ID")]
         [Required(ErrorMessage = "Required")]
-        public string StudentID { get; set; }
+        [Display(Name = "Student ID")]
+        public string StudentSchoolID { get; set; }
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "Required")]

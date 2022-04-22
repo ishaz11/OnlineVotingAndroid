@@ -51,7 +51,7 @@ namespace OnlineVotingAndroid.Controllers
                           orderby x.StudentID
                           select new
                           {
-                              ID = x.id,
+                              ID = x.StudentID,
                               Name = x.StudentID + " " + x.LastName + ", " + x.FirstName
                           };
 
