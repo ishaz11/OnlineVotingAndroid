@@ -11,7 +11,7 @@ namespace OnlineVotingAndroid.Models
         [Key]
         public int PartyListID { get; set; }
 
-        [Display(Name = "Party List")]
+        [Display(Name = "Partylist Name")]
         [Required(ErrorMessage = "Required")]
         public string PartyListName { get; set; }
 

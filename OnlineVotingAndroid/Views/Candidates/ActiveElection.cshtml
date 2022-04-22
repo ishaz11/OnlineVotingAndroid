@@ -13,27 +13,23 @@
 
             @foreach (var position in Model.Select(x => x.Position.PositionName).Distinct())
             {
-                <div class="col-xl-6">
+                <div class="col-xl-4">
                     <div class="card">
-                        @*<div class="card-header">
-                                <h4 class="card-title">Horizontal Form</h4>
-                            </div>*@
+
+                        <div class="card-header">
+                            <h4 class="card-title">@position <span class="badge badge-primary badge-pill">@Model.Where(x => x.Position.PositionName == position).Count()</span></h4>
+                            <a href="@Url.Action("Create", "Students")" class="btn btn-outline-primary btn-lg">Create New</a>
+                        </div>
                         <div class="card-body">
-
-
-                            <div class="card-header">
-                                <h4 class="card-title">@position</h4>
-                            </div>
-
                             <div class="table-responsive">
                                 <table class="table mb-0">
                                     <thead>
                                         <tr>
                                             <th>
-                                                Running For
+                                                Student Name
                                             </th>
                                             <th>
-                                                Student Name
+                                                Action
                                             </th>
                                             @*<th></th>*@
                                         </tr>
@@ -42,17 +38,15 @@
                                         @foreach (var item in Model.Where(x => x.Position.PositionName == position))
                                         {
                                             <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Position.PositionName)
-                                                </td>
+
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Students.LastName),  @Html.DisplayFor(modelItem => item.Students.FirstName)
                                                 </td>
-                                                @*<td>
-                                                        @Html.ActionLink("Edit", "Edit", new { id = item.CandidateID }) |
+                                                <td>
+                                                        @Html.ActionLink("Remove", "Edit", new { id = item.CandidateID }) @*|
                                                         @Html.ActionLink("Details", "Details", new { id = item.CandidateID }) |
-                                                        @Html.ActionLink("Delete", "Delete", new { id = item.CandidateID })
-                                                    </td>*@
+                                                        @Html.ActionLink("Delete", "Delete", new { id = item.CandidateID })*@
+                                                    </td>
                                             </tr>
                                         }
                                     </tbody>

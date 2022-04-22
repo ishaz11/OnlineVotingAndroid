@@ -26,7 +26,7 @@
 
                         <div class="table-responsive">
                             <table id="example" class="display" style="min-width: 845px">
-                                <thead>
+                                <thead class="btn-light">
                                     <tr>
                                         <th>
                                             Student ID
@@ -36,7 +36,7 @@
                                         </th>
 
                                         <th>
-                                            Party lIst
+                                            Partylist
                                         </th>
 
                                         <th></th>
@@ -56,19 +56,16 @@
                                                 @if (item.party == "N/A")
                                                 {
 
-                                                    @item.party<a href="@Url.Action("Edit", "Students", new {id = item.partyMemberID})" class="btn"><span class="btn-"><i class="fa fa-edit"></i></span></a>
+                                                    @item.party <a href="@Url.Action("Create", "PartyListMembers", new {Id = item.students.StudentID})" class="badge badge-outline-primary"><span class="btn-"><i class="fa fa-edit"></i></span></a>
                                                 }
                                                 else
                                                 {
-                                                    @Html.DisplayFor(modelItem => item.party)<a href="@Url.Action("Edit", "PartyListMembers", new {id = item.partyMemberID})" class="btn"><span class="btn-"><i class="fa fa-edit"></i></span></a>
+                                                    @Html.DisplayFor(modelItem => item.party) <a href="@Url.Action("Edit", "PartyListMembers", new {id = item.partyMemberID})" class="badge badge-outline-primary"><span class="btn-"><i class="fa fa-edit"></i></span></a>
                                                 }
 
                                             </td>
                                             <td>
-                                                @Html.ActionLink("Edit", "Edit", new
-                                                {
-                                                    id = item.students.StudentID
-}) |
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.students.StudentID }) |
                                                 @Html.ActionLink("Details", "Details", new { id = item.students.StudentID }) |
                                                 @Html.ActionLink("Delete", "Delete", new { id = item.students.StudentID })
                                             </td>

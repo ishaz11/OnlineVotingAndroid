@@ -31,12 +31,9 @@
                                             @Html.DisplayNameFor(model => model.PartyListName)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.IsActive)
+                                            Status
                                         </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.isEnable)
-                                        </th>
-                                        <th></th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,11 +45,16 @@
                                                 @Html.DisplayFor(modelItem => item.PartyListName)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.IsActive)
+                                                @if (item.isEnable == true)
+                                                {
+                                                    <span class="badge badge-primary">Active</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-danger">Disabled</span>
+                                                }
                                             </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.isEnable)
-                                            </td>
+                                        
                                             <td>
                                                 @Html.ActionLink("Edit", "Edit", new { id = item.PartyListID }) |
                                                 @Html.ActionLink("Details", "Details", new { id = item.PartyListID }) |

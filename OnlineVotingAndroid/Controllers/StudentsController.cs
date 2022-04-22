@@ -24,7 +24,7 @@ namespace OnlineVotingAndroid.Controllers
             var partylist = db.PartyLists.ToList();
 
             var studentsAndparty = from s in students
-                                   join ptm in partylistMember on s.StudentID equals ptm.StudentID into table1
+                                   join ptm in partylistMember.Where(x=> x.PartyLists.isEnable == true) on s.StudentID equals ptm.StudentID into table1
                                    from tbl in table1.DefaultIfEmpty()
                                    select new StudentsAndParty
                                    {

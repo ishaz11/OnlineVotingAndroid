@@ -37,17 +37,18 @@ namespace OnlineVotingAndroid.Controllers
         }
 
         // GET: PartyListMembers/Create
-        public ActionResult Create()
+        public ActionResult Create(int? Id)
         {
             var student = from x in db.Students
+                          where x.StudentID == Id
                           orderby x.StudentID
                           select new
                           {
                               ID = x.StudentID,
                               Name = x.StudentSchoolID + " " + x.LastName + ", " + x.FirstName
                           };
-
-            ViewBag.PartyListID = new SelectList(db.PartyLists, "PartyListID", "PartyListName");
+            ViewBag.students = db.Students.Find(Id);
+            ViewBag.PartyListID = new SelectList(db.PartyLists.Where(x => x.isEnable == true), "PartyListID", "PartyListName");
             ViewBag.StudentID = new SelectList(student, "ID", "Name");
             return View();
         }
@@ -61,12 +62,15 @@ namespace OnlineVotingAndroid.Controllers
         {
             if (ModelState.IsValid)
             {
+                PartyListMember partyListMembertoDelete = db.PartyListMembers.Find(partyListMember.Id);
+                db.PartyListMembers.Remove(partyListMembertoDelete);
+
                 db.PartyListMembers.Add(partyListMember);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Students");
             }
 
-            ViewBag.PartyListID = new SelectList(db.PartyLists, "PartyListID", "PartyListName", partyListMember.PartyListID);
+            ViewBag.PartyListID = new SelectList(db.PartyLists.Where(x => x.isEnable == true), "PartyListID", "PartyListName", partyListMember.PartyListID);
             ViewBag.StudentID = new SelectList(db.Students, "id", "StudentID", partyListMember.StudentID);
             return View(partyListMember);
         }
@@ -74,6 +78,15 @@ namespace OnlineVotingAndroid.Controllers
         // GET: PartyListMembers/Edit/5
         public ActionResult Edit(int? id)
         {
+            var student = from x in db.Students
+                          where x.StudentID == id
+                          orderby x.StudentID
+                          select new
+                          {
+                              ID = x.StudentID,
+                              Name = x.StudentSchoolID + " " + x.LastName + ", " + x.FirstName
+                          };
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -83,8 +96,9 @@ namespace OnlineVotingAndroid.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PartyListID = new SelectList(db.PartyLists, "PartyListID", "PartyListName", partyListMember.PartyListID);
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentID", partyListMember.StudentID);
+            ViewBag.students = db.Students.Find(id);
+            ViewBag.PartyListID = new SelectList(db.PartyLists.Where(x => x.isEnable == true), "PartyListID", "PartyListName");
+            ViewBag.StudentID = new SelectList(student, "ID", "Name");
             return View(partyListMember);
         }
 
@@ -102,7 +116,7 @@ namespace OnlineVotingAndroid.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Students");
             }
-            ViewBag.PartyListID = new SelectList(db.PartyLists, "PartyListID", "PartyListName", partyListMember.PartyListID);
+            ViewBag.PartyListID = new SelectList(db.PartyLists.Where(x => x.isEnable == true), "PartyListID", "PartyListName", partyListMember.PartyListID);
             ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentID", partyListMember.StudentID);
             return View(partyListMember);
         }
