@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OnlineVotingAndroid.Models.Candidate>
+﻿@model IEnumerable<OnlineVotingAndroid.Models._candidateswPartylist>
 
 @{
     ViewBag.Title = "ActiveElection";
@@ -11,14 +11,17 @@
         <div class="row">
 
 
-            @foreach (var position in Model.Select(x => x.Position.PositionName).Distinct())
+            @foreach (var position in ViewBag.positions)
             {
                 <div class="col-xl-4">
                     <div class="card">
 
                         <div class="card-header">
-                            <h4 class="card-title">@position <span class="badge badge-primary badge-pill">@Model.Where(x => x.Position.PositionName == position).Count()</span></h4>
-                            <a href="@Url.Action("Create", "Students")" class="btn btn-outline-primary btn-lg">Create New</a>
+                            <h4 class="card-title">@position.PositionName <span class="badge badge-primary badge-pill">@Model.Where(x => x.candidate.PositionId == position.PositionId).Count()</span></h4>
+                            <span>
+                                <a href="@Url.Action("Edit", "Positions", new {id = position.PositionId})" class="badge badge-outline-primary"><span class="btn-"><i class="fa fa-edit"></i></span></a>
+                                <a href="@Url.Action("Create", "Candidates", new {id = position.PositionId})" class="badge badge-outline-primary"><span class="btn-"><i class="fa fa-plus"></i></span></a>
+                            </span>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -29,25 +32,31 @@
                                                 Student Name
                                             </th>
                                             <th>
+                                                Partylist
+                                            </th>
+                                            <th>
                                                 Action
                                             </th>
                                             @*<th></th>*@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var item in Model.Where(x => x.Position.PositionName == position))
+                                        @foreach (var item in Model.Where(x => x.candidate.Position.PositionName == position.PositionName))
                                         {
-                                            <tr>
+                                        <tr>
 
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Students.LastName),  @Html.DisplayFor(modelItem => item.Students.FirstName)
-                                                </td>
-                                                <td>
-                                                        @Html.ActionLink("Remove", "Edit", new { id = item.CandidateID }) @*|
-                                                        @Html.ActionLink("Details", "Details", new { id = item.CandidateID }) |
-                                                        @Html.ActionLink("Delete", "Delete", new { id = item.CandidateID })*@
-                                                    </td>
-                                            </tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.candidate.Students.LastName),  @Html.DisplayFor(modelItem => item.candidate.Students.FirstName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.partyLists)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Remove", "Delete", new { id = item.candidate.CandidateID }) @*|
+            @Html.ActionLink("Details", "Details", new { id = item.CandidateID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateID })*@
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
 
@@ -63,6 +72,23 @@
                     </div>
                 </div>
             }
+            <div class="col-xl-4">
+                <div class="card text-center">
+
+
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2>Add Position</h2>
+                        </div>
+  
+                            <h1>
+                                <a href="@Url.Action("Create", "Positions")" class="badge badge-outline-primary col-12"><span class="btn-"><i class="fa fa-plus"></i></span></a>
+                            </h1>
+
+
+                    </div>
+                </div>
+            </div>
 
 
         </div>

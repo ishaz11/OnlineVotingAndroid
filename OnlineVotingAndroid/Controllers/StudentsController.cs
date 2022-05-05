@@ -186,6 +186,16 @@ namespace OnlineVotingAndroid.Controllers
             }
         }
 
+        public ActionResult SetStudent()
+        {
+            var students = db.Students.ToList();
+            foreach (var student in students)
+            {
+                student.isEnable = true;
+            }
+            return View("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

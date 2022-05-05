@@ -167,6 +167,8 @@
     <Compile Include="Models\StudentsAndParty.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vote.cs" />
+    <Compile Include="Models\_candidateswPartylist.cs" />
+    <Compile Include="Models\_StudentsWithPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

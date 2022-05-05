@@ -55,7 +55,7 @@ namespace OnlineVotingAndroid.Controllers
                 position.ElectionID = db.Elections.Where(x=> x.IsActive == true).Select(x=>x.ElectionID).FirstOrDefault();
                 db.Positions.Add(position);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ActiveElection", "Candidates");
             }
 
             ViewBag.ElectionID = new SelectList(db.Elections, "ElectionID", "ElectionName", position.ElectionID);
@@ -89,7 +89,7 @@ namespace OnlineVotingAndroid.Controllers
             {
                 db.Entry(position).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ActiveElection", "Candidates");
             }
             ViewBag.ElectionID = new SelectList(db.Elections, "ElectionID", "ElectionName", position.ElectionID);
             return View(position);

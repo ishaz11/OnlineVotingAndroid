@@ -37,22 +37,66 @@ namespace OnlineVotingAndroid.Controllers
         }
 
         // GET: Candidates/Create
-        public ActionResult Create()
+        public ActionResult CreateCanditate(int? id)
         {
             var position = from x in db.Positions
-                           where x.Election.IsActive == true
+                           where x.Election.IsActive == true && x.PositionId == id
                            select new
                            {
                                ID = x.PositionId,
                                Name = x.PositionName
                            };
 
-            var student = from x in db.Students
-                          orderby x.StudentID
+            var studentlist = from s in db.Students
+                              join c in db.Candidates.Where(c => c.PositionId == id) on s.StudentID equals c.StudentID into table11
+                              from tbl in table11.DefaultIfEmpty()
+                              select new _StudentsWithPosition
+                              {
+                                  _students = s,
+                                  _position = tbl.Position.PositionName
+                              };
+
+            
+            var student = from x in studentlist
+                          where x._students != null
+                          orderby x._students.StudentID
                           select new
                           {
-                              ID = x.StudentID,
-                              Name = x.StudentID + " " + x.LastName + ", " + x.FirstName
+                              ID = x._students.StudentID,
+                              Name = x._students.StudentID + " " + x._students.LastName + ", " + x._students.FirstName
+                          };
+
+            ViewBag.PositionId = new SelectList(position, "ID", "Name");
+            ViewBag.StudentID = new SelectList(student, "ID", "Name");
+            return RedirectToAction("Create");
+        }
+        public ActionResult Create(int? id)
+        {
+            var position = from x in db.Positions
+                           where x.Election.IsActive == true && x.PositionId == id
+                           select new
+                           {
+                               ID = x.PositionId,
+                               Name = x.PositionName
+                           };
+
+            var studentlist = from s in db.Students
+                              join c in db.Candidates.Where(c => c.Position.Election.IsActive == true) on s.StudentID equals c.StudentID into table11
+                              from tbl in table11.DefaultIfEmpty()
+                              select new _StudentsWithPosition
+                              {
+                                  _students = s,
+                                  _position = tbl.Position.PositionName
+                              };
+
+
+            var student = from x in studentlist
+                          where x._position == null
+                          orderby x._students.LastName
+                          select new
+                          {
+                              ID = x._students.StudentID,
+                              Name = x._students.LastName + ", " + x._students.FirstName
                           };
 
             ViewBag.PositionId = new SelectList(position, "ID", "Name");
@@ -72,7 +116,7 @@ namespace OnlineVotingAndroid.Controllers
                 //candidate.PositionId = db.Positions.Where(x => x.Election.IsActive == true).Select(x => x.PositionId).FirstOrDefault();
                 db.Candidates.Add(candidate);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ActiveElection");
             }
 
             ViewBag.PositionId = new SelectList(db.Positions, "PositionId", "PositionName", candidate.PositionId);
@@ -138,14 +182,24 @@ namespace OnlineVotingAndroid.Controllers
             Candidate candidate = db.Candidates.Find(id);
             db.Candidates.Remove(candidate);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ActiveElection");
         }
 
         // GET: ActiveCandidates
         public ActionResult ActiveElection()
         {
             var candidates = db.Candidates.Include(c => c.Position).Where(c => c.Position.Election.IsActive == true).Include(c => c.Students);
-            return View(candidates.ToList());
+            var listCandidates = from c in candidates
+                                 join ptl in db.PartyListMembers on c.StudentID equals ptl.StudentID into table1
+                                 from tbl in table1.DefaultIfEmpty()
+                                 select new _candidateswPartylist
+                                 {
+                                     candidate = c,
+                                     partyLists = tbl == null || tbl.PartyLists.PartyListName == null ? "N/A" : tbl.PartyLists.PartyListName,
+                                 };
+
+            ViewBag.positions = db.Positions.Where(x=>x.Election.IsActive == true).ToList();
+            return View(listCandidates.ToList());
         }
 
 

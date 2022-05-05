@@ -27,9 +27,6 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Election.ElectionName)
-                                        </th>
-                                        <th>
                                             @Html.DisplayNameFor(model => model.PositionName)
                                         </th>
                                         <th>
@@ -42,9 +39,6 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Election.ElectionName)
-                                            </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.PositionName)
                                             </td>

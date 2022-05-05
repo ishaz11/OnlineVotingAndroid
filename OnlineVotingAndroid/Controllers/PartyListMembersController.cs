@@ -63,7 +63,12 @@ namespace OnlineVotingAndroid.Controllers
             if (ModelState.IsValid)
             {
                 PartyListMember partyListMembertoDelete = db.PartyListMembers.Find(partyListMember.Id);
-                db.PartyListMembers.Remove(partyListMembertoDelete);
+                if(partyListMembertoDelete != null)
+                {
+                    db.PartyListMembers.Remove(partyListMembertoDelete);
+                    db.SaveChanges();
+                }
+                
 
                 db.PartyListMembers.Add(partyListMember);
                 db.SaveChanges();
