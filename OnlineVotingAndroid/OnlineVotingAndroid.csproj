@@ -71,12 +71,21 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.8\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.8\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.8\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -137,6 +146,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\APICandidateController.cs" />
+    <Compile Include="Controllers\APIStudentsController.cs" />
+    <Compile Include="Controllers\APIusersController.cs" />
+    <Compile Include="Controllers\APIVotesController.cs" />
     <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Controllers\ElectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -153,7 +167,12 @@
     <Compile Include="Migrations\202204211527295_migration1.designer.cs">
       <DependentUpon>202204211527295_migration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205071031070_migration5722.cs" />
+    <Compile Include="Migrations\202205071031070_migration5722.designer.cs">
+      <DependentUpon>202205071031070_migration5722.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\APIModels\CandidatesAPI.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\Election.cs" />
     <Compile Include="Models\OnlineVotingDbContext.cs" />
@@ -166,6 +185,7 @@
     <Compile Include="Models\Students.cs" />
     <Compile Include="Models\StudentsAndParty.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserChange.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Models\_candidateswPartylist.cs" />
     <Compile Include="Models\_StudentsWithPosition.cs" />
@@ -4304,6 +4324,8 @@
     <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="ContentLogin\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings2.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4395,6 +4417,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204211527295_migration1.resx">
       <DependentUpon>202204211527295_migration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205071031070_migration5722.resx">
+      <DependentUpon>202205071031070_migration5722.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

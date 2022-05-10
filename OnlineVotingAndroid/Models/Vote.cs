@@ -21,7 +21,11 @@ namespace OnlineVotingAndroid.Models
         [ForeignKey("CandidateID")]
         public virtual Candidate Candidates { get; set; }
 
-        
+        public int? ElectionID { get; set; }
+        [ForeignKey("ElectionID")]
+        public virtual Election Election { get; set; }
+
+
         [Display(Name = "Date Voted")]
         public DateTime DateVoted { get; set; }
 
