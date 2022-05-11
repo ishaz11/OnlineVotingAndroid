@@ -29,13 +29,14 @@ namespace OnlineVotingAndroid.Controllers
             var listCandidates = from c in candidates
                                  join ptl in db.PartyListMembers on c.StudentID equals ptl.StudentID into table1
                                  from tbl in table1.DefaultIfEmpty()
-                                 select new 
+                                 select new
                                  {
                                      CandidateID = c.CandidateID,
                                      StudentID = c.StudentID,
                                      FirstName = c.Students.FirstName,
                                      LastName = c.Students.LastName,
                                      PartyListName = tbl == null || tbl.PartyLists.PartyListName == null ? "N/A" : tbl.PartyLists.PartyListName,
+                                     checkboxValue = false
                                  };
 
             return Ok(listCandidates.ToList());
