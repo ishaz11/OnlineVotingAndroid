@@ -36,7 +36,8 @@ namespace OnlineVotingAndroid.Controllers
                                      FirstName = c.Students.FirstName,
                                      LastName = c.Students.LastName,
                                      PartyListName = tbl == null || tbl.PartyLists.PartyListName == null ? "N/A" : tbl.PartyLists.PartyListName,
-                                     checkboxValue = false
+                                     checkboxValue = false,
+                                     positionID = c.PositionId
                                  };
 
             return Ok(listCandidates.ToList());
