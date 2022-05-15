@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using OnlineVotingAndroid.Models;
+using OnlineVotingAndroid.Models.APIModels;
 
 namespace OnlineVotingAndroid.Controllers
 {
@@ -25,7 +26,21 @@ namespace OnlineVotingAndroid.Controllers
         [Route("api/StudentLogin")]
         public IHttpActionResult StudentLogin(Students students)
         {
-            students = db.Students.Where(x => x.StudentSchoolID == students.StudentSchoolID && x.Password == students.Password).FirstOrDefault();
+            students = db.Students.Where(x => x.StudentSchoolID == students.StudentSchoolID && x.Password   == students.Password).FirstOrDefault();
+            if (students == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(students);
+        }
+
+        [Route("api/ChangePassword")]
+        public IHttpActionResult ChangePassword(_StudentChangePass _changePass)
+        {
+            var students = db.Students.Where(x => x.StudentSchoolID == _changePass.StudentSchoolID && x.Password == _changePass.Password).FirstOrDefault();
+            students.Password = _changePass.NewPassword;
+            db.SaveChanges();
             if (students == null)
             {
                 return NotFound();

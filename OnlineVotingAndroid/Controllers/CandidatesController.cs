@@ -202,6 +202,25 @@ namespace OnlineVotingAndroid.Controllers
             return View(listCandidates.ToList());
         }
 
+        public ActionResult VoteStatus()
+        {
+            var candidates = db.Candidates.Include(c => c.Position).Where(c => c.Position.Election.IsActive == true).Include(c => c.Students);
+            var listCandidates = from c in candidates
+                                 join ptl in db.PartyListMembers on c.StudentID equals ptl.StudentID into table1
+                                 join v in db.Votes on c.CandidateID equals v.CandidateID into table2
+                                 from tbl in table1.DefaultIfEmpty()
+                                 select new _CandidatesVoteCount
+                                 {
+                                     candidate = c,
+                                     partyLists = tbl == null || tbl.PartyLists.PartyListName == null ? "N/A" : tbl.PartyLists.PartyListName,
+                                     voteCount = table2.Count()
+                                 };
+
+            ViewBag.positions = db.Positions.Where(x => x.Election.IsActive == true).ToList();
+            return View(listCandidates.OrderByDescending(x=>x.voteCount).ToList());
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {

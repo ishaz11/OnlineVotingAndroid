@@ -160,6 +160,8 @@
     <Compile Include="Controllers\SamplePersonsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\Votes1Controller.cs" />
+    <Compile Include="Controllers\VotesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,7 +174,10 @@
       <DependentUpon>202205071031070_migration5722.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\APIModels\APIVotes.cs" />
     <Compile Include="Models\APIModels\CandidatesAPI.cs" />
+    <Compile Include="Models\APIModels\UserVoted.cs" />
+    <Compile Include="Models\APIModels\_StudentChangePass.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\Election.cs" />
     <Compile Include="Models\OnlineVotingDbContext.cs" />
@@ -187,6 +192,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserChange.cs" />
     <Compile Include="Models\Vote.cs" />
+    <Compile Include="Models\_CandidatesVoteCount.cs" />
     <Compile Include="Models\_candidateswPartylist.cs" />
     <Compile Include="Models\_StudentsWithPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4395,6 +4401,18 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Votes\Create.cshtml" />
+    <Content Include="Views\Votes\Delete.cshtml" />
+    <Content Include="Views\Votes\Details.cshtml" />
+    <Content Include="Views\Votes\Edit.cshtml" />
+    <Content Include="Views\Votes\Index.cshtml" />
+    <Content Include="Views\Votes1\Create.cshtml" />
+    <Content Include="Views\Votes1\Delete.cshtml" />
+    <Content Include="Views\Votes1\Details.cshtml" />
+    <Content Include="Views\Votes1\Edit.cshtml" />
+    <Content Include="Views\Votes1\Index.cshtml" />
+    <Content Include="Views\Votes1\Status.cshtml" />
+    <Content Include="Views\Candidates\VoteStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

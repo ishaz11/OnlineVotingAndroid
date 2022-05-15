@@ -1,0 +1,50 @@
+﻿@model OnlineVotingAndroid.Models.Vote
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vote</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Candidates.CandidateID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Candidates.CandidateID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Election.ElectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Election.ElectionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Students.StudentSchoolID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Students.StudentSchoolID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateVoted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateVoted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VoteID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

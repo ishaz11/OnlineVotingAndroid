@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using OnlineVotingAndroid.Models;
+using OnlineVotingAndroid.Models.APIModels;
 
 namespace OnlineVotingAndroid.Controllers
 {
@@ -22,15 +23,37 @@ namespace OnlineVotingAndroid.Controllers
             return db.Votes;
         }
 
-
-        public IHttpActionResult SubmitVote(Vote vote)
+        [Route("api/VoteList")]
+        public IHttpActionResult VoteList(UserVoted uservoted)
         {
-            var ifExist = db.Votes.Where(x => x.StudentID == vote.StudentID && x.CandidateID == vote.CandidateID);
-            if (ifExist.Any())
+            var voteList = db.Votes.Where(x => x.Election.IsActive == true && x.StudentID == uservoted.StudentID).ToList();
+            if (voteList.Count < 1)
             {
                 return BadRequest();
             }
+           var vote = from v in voteList
+                   select new 
+                   {
+                       StudentID = v.StudentID,
+                       VoteID = v.VoteID,
+                       CandidateID = v.CandidateID,
+                       DateVoted = v.DateVoted,
+                       ElectionID = v.ElectionID,
+                   };
+
+            return Ok(vote);
+        }
+
+        [Route("api/SubmitVote")]
+        public IHttpActionResult SubmitVote(Vote vote)
+        {
+            //var ifExist = db.Votes.Where(x => x.StudentID == vote.StudentID && x.CandidateID == vote.CandidateID);
+            //if (ifExist.Any())
+            //{
+            //    return BadRequest();
+            //}
             vote.DateVoted = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Singapore Standard Time");
+            vote.ElectionID = db.Elections.Where(x=>x.IsActive).FirstOrDefault().ElectionID;
             db.Votes.Add(vote);
             db.SaveChanges();
 

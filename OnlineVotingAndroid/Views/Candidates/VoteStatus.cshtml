@@ -1,0 +1,90 @@
+﻿@model IEnumerable<OnlineVotingAndroid.Models._CandidatesVoteCount>
+
+@{
+    ViewBag.Title = "ActiveElection";
+}
+
+<div class="content-body">
+    <div class="container-fluid">
+
+        <!-- row -->
+        <div class="row">
+
+
+            @foreach (var position in ViewBag.positions)
+            {
+                <div class="col-xl-4">
+                    <div class="card">
+
+                        <div class="card-header">
+                            <h4 class="card-title">@position.PositionName <span class="badge badge-primary badge-pill">@Model.Where(x => x.candidate.PositionId == position.PositionId).Count()</span></h4>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Student Name
+                                            </th>
+                                            <th>
+                                                Partylist
+                                            </th>
+                                            <th>
+                                                Votes 
+                                            </th>
+        
+                                            @*<th></th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{var total = 0;}
+                                        @foreach (var item in Model.Where(x => x.candidate.Position.PositionName == position.PositionName))
+                                        {
+                                            total = total + item.voteCount;
+                                            <tr>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.candidate.Students.LastName),  @Html.DisplayFor(modelItem => item.candidate.Students.FirstName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.partyLists)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.voteCount)
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td>
+                                                <h4>Total</h4>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <h4>@total</h4>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+
+
+                                </table>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+</div>
+

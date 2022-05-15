@@ -1,0 +1,66 @@
+﻿@model IEnumerable<OnlineVotingAndroid.Models.Vote>
+
+@{
+    Layout = null;
+}
+
+<div class="content-body">
+    <div class="container-fluid">
+
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Horizontal Form</h4>
+                        </div>*@
+                    <div class="card-body">
+
+                        <div class="table-responsive">
+
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Candidates.CandidateID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Election.ElectionName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Students.StudentSchoolID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DateVoted)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Candidates.CandidateID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Election.ElectionName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Students.StudentSchoolID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DateVoted)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.VoteID }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.VoteID }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.VoteID })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+
+                            </table>

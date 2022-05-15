@@ -1,0 +1,53 @@
+﻿@model IEnumerable<OnlineVotingAndroid.Models.Vote>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="content-body">
+    <div class="container-fluid">
+
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Horizontal Form</h4>
+                        </div>*@
+                    <div class="card-body">
+
+
+                        <p>
+                            @*@Html.ActionLink("Create ", "Create")*@
+                            <a href="@Url.Action("Create", "Students")" class="btn btn-outline-primary btn-lg">Create New</a>
+                        </p>
+
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead class="btn-light">
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Students.StudentSchoolID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DateVoted)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Students.StudentSchoolID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateVoted)
+                                        </td>
+                                        
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
