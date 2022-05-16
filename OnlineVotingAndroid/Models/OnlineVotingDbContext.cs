@@ -18,5 +18,6 @@ namespace OnlineVotingAndroid.Models
         public DbSet<PartyListMember> PartyListMembers { get; set; }
         public DbSet<Platform> Platforms { get; set; }
         public DbSet<SamplePerson> SamplePersons { get; set; }
+        public DbSet<_YearAndSection> _YearAndSections { get; set; }
     }
 }

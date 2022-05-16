@@ -158,10 +158,12 @@
     <Compile Include="Controllers\PartyListsController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\SamplePersonsController.cs" />
+    <Compile Include="Controllers\Students1Controller.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\Votes1Controller.cs" />
     <Compile Include="Controllers\VotesController.cs" />
+    <Compile Include="Controllers\_YearAndSectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,6 +174,10 @@
     <Compile Include="Migrations\202205071031070_migration5722.cs" />
     <Compile Include="Migrations\202205071031070_migration5722.designer.cs">
       <DependentUpon>202205071031070_migration5722.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205161657178_yearandsection.cs" />
+    <Compile Include="Migrations\202205161657178_yearandsection.designer.cs">
+      <DependentUpon>202205161657178_yearandsection.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\APIModels\APIVotes.cs" />
@@ -195,6 +201,7 @@
     <Compile Include="Models\_CandidatesVoteCount.cs" />
     <Compile Include="Models\_candidateswPartylist.cs" />
     <Compile Include="Models\_StudentsWithPosition.cs" />
+    <Compile Include="Models\_YearAndSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4343,6 +4350,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Upload\background.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -4413,11 +4421,20 @@
     <Content Include="Views\Votes1\Index.cshtml" />
     <Content Include="Views\Votes1\Status.cshtml" />
     <Content Include="Views\Candidates\VoteStatus.cshtml" />
+    <Content Include="Views\Students1\Create.cshtml" />
+    <Content Include="Views\Students1\Delete.cshtml" />
+    <Content Include="Views\Students1\Details.cshtml" />
+    <Content Include="Views\Students1\Edit.cshtml" />
+    <Content Include="Views\Students1\Index.cshtml" />
+    <Content Include="Views\_YearAndSection\Create.cshtml" />
+    <Content Include="Views\_YearAndSection\Delete.cshtml" />
+    <Content Include="Views\_YearAndSection\Details.cshtml" />
+    <Content Include="Views\_YearAndSection\Edit.cshtml" />
+    <Content Include="Views\_YearAndSection\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -4438,6 +4455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205071031070_migration5722.resx">
       <DependentUpon>202205071031070_migration5722.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205161657178_yearandsection.resx">
+      <DependentUpon>202205161657178_yearandsection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

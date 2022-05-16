@@ -23,7 +23,7 @@ namespace OnlineVotingAndroid.Controllers
             var partylistMember = db.PartyListMembers.ToList();
             var partylist = db.PartyLists.ToList();
 
-            var studentsAndparty = from s in students
+            var studentsAndparty = from s in students where s.isEnable == true
                                    join ptm in partylistMember.Where(x=> x.PartyLists.isEnable == true) on s.StudentID equals ptm.StudentID into table1
                                    from tbl in table1.DefaultIfEmpty()
                                    select new StudentsAndParty
@@ -53,6 +53,7 @@ namespace OnlineVotingAndroid.Controllers
         // GET: Students/Create
         public ActionResult Create()
         {
+            ViewBag.YearAndSectionID = new SelectList(db._YearAndSections, "YearAndSectionID", "Grade");
             return View();
         }
 
@@ -63,6 +64,8 @@ namespace OnlineVotingAndroid.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Students students)
         {
+            ViewBag.YearAndSectionID = new SelectList(db._YearAndSections, "YearAndSectionID", "Grade");
+            students.isEnable = true;
             students.Password = "1234";
             if (ModelState.IsValid)
             {
@@ -77,6 +80,7 @@ namespace OnlineVotingAndroid.Controllers
         // GET: Students/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.YearAndSectionID = new SelectList(db._YearAndSections, "YearAndSectionID", "Grade");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -96,6 +100,7 @@ namespace OnlineVotingAndroid.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Students students)
         {
+            ViewBag.YearAndSectionID = new SelectList(db._YearAndSections, "YearAndSectionID", "Grade");
             if (ModelState.IsValid)
             {
                 db.Entry(students).State = EntityState.Modified;
@@ -126,7 +131,7 @@ namespace OnlineVotingAndroid.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Students students = db.Students.Find(id);
-            db.Students.Remove(students);
+            students.isEnable = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

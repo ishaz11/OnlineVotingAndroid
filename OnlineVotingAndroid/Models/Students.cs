@@ -34,15 +34,20 @@ namespace OnlineVotingAndroid.Models
         public DateTime Date { get; set; }
 
         [Display(Name = "Year")]
-        [Required(ErrorMessage = "Required")]
         public string YearnSection { get; set; }
 
         public bool isEnable { get; set; }
 
         [Display(Name = "Photo")]
+
+       
+        public int? YearAndSectionID { get; set; }
+        [ForeignKey("YearAndSectionID")]
+        public _YearAndSection _YearAndSection { get; set; }
         public string Photo { get; set; }
 
         [NotMapped]
         public HttpPostedFileBase File1 { get; set; }
+
     }
 }
