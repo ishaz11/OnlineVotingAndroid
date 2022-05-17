@@ -103,6 +103,7 @@ namespace OnlineVotingAndroid.Controllers
             ViewBag.YearAndSectionID = new SelectList(db._YearAndSections, "YearAndSectionID", "Grade");
             if (ModelState.IsValid)
             {
+                students.isEnable = true;
                 db.Entry(students).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
