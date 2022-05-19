@@ -45,7 +45,7 @@ namespace OnlineVotingAndroid.Controllers
                           select new
                           {
                               ID = x.StudentID,
-                              Name = x.StudentSchoolID + " " + x.LastName + ", " + x.FirstName
+                              Name = "(" + x.StudentSchoolID + ")" + " " + x.LastName + ", " + x.FirstName
                           };
             ViewBag.students = db.Students.Find(Id);
             ViewBag.PartyListID = new SelectList(db.PartyLists.Where(x => x.isEnable == true), "PartyListID", "PartyListName");
@@ -63,12 +63,12 @@ namespace OnlineVotingAndroid.Controllers
             if (ModelState.IsValid)
             {
                 PartyListMember partyListMembertoDelete = db.PartyListMembers.Find(partyListMember.Id);
-                if(partyListMembertoDelete != null)
+                if (partyListMembertoDelete != null)
                 {
                     db.PartyListMembers.Remove(partyListMembertoDelete);
                     db.SaveChanges();
                 }
-                
+
 
                 db.PartyListMembers.Add(partyListMember);
                 db.SaveChanges();

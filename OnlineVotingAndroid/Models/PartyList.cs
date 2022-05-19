@@ -16,6 +16,14 @@ namespace OnlineVotingAndroid.Models
         public string PartyListName { get; set; }
 
         [Display(Name = "Is Active")]
+
+        public string Platform1 { get; set; }
+        public string Platform2 { get; set; }
+        public string Platform3 { get; set; }
+        public string Platform4 { get; set; }
+        public string Platform { get; set; }
+        public string Platform6 { get; set; }
+
         public bool IsActive { get; set; }
 
         public bool isEnable { get; set; }

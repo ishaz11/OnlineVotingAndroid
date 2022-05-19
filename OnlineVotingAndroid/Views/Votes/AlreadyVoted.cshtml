@@ -1,0 +1,63 @@
+﻿=
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="content-body">
+    <div class="container-fluid">
+
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-xl-12 col-xxl-12">
+                <div class="card">
+                    @*<div class="card-header">
+                            <h4 class="card-title">Horizontal Form</h4>
+                        </div>*@
+                    <div class="card-body">
+
+
+                        <p>
+                            @*@Html.ActionLink("Create ", "Create")*@
+                            <a href="@Url.Action("Create", "Students")" class="btn btn-outline-primary btn-lg">Create New</a>
+                        </p>
+
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead class="btn-light">
+                                    <tr>
+                                        <th>
+                                            Student ID
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.alreadyVoted)
+                                    {
+                                        <tr>
+                                            <td>
+                                                (@item.StudentSchoolID)
+                                            </td>
+                                            <td>
+                                                @item.FirstName @item.LastName
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

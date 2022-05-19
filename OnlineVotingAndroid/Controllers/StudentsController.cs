@@ -153,7 +153,7 @@ namespace OnlineVotingAndroid.Controllers
             }
             else
             {
-                if (excelfile.FileName.EndsWith("xls") || excelfile.FileName.EndsWith("xlsx"))
+                if (excelfile.FileName.EndsWith("csv"))
                 {
                     string path = Server.MapPath("/Upload/" + excelfile.FileName);
 
@@ -161,26 +161,55 @@ namespace OnlineVotingAndroid.Controllers
                     {
                         System.IO.File.Delete(path);
                     }
+                    
                     excelfile.SaveAs(path);
 
-                    Excel.Application application = new Excel.Application();
-                    Excel.Workbook workbook = application.Workbooks.Open(path);
-                    Excel.Worksheet worksheet = workbook.ActiveSheet;
-                    Excel.Range range = worksheet.UsedRange;
-
                     List<Students> students = new List<Students>();
-                    for (int row = 2; row <= range.Rows.Count; row++)
+                    string csvData = System.IO.File.ReadAllText(path);
+                    foreach (string row in csvData.Split('\n'))
                     {
-                        Students student = new Students();
-                        student.StudentSchoolID = ((Excel.Range)range.Cells[row, 1]).Text;
-                        student.FirstName = ((Excel.Range)range.Cells[row, 2]).Text;
-                        student.LastName = ((Excel.Range)range.Cells[row, 3]).Text;
-                        student.Date = DateTime.Now;
-                        student.YearnSection = ((Excel.Range)range.Cells[row, 4]).Text;
-                        students.Add(student);
+                        if (!string.IsNullOrEmpty(row))
+                        {
+                            students.Add(new Students
+                            {
+                                StudentSchoolID = row.Split(',')[0],
+                                FirstName = row.Split(',')[1],
+                                LastName = row.Split(',')[2],
+                                StudentID = Convert.ToInt32(row.Split(',')[3]),
+                                isEnable = true,
+                                Password = "1234",
+                                Date = DateTime.Now,
+                                YearAndSectionID = 1
+                        });
+                        }
+                    }
+                    foreach (var student in students)
+                    {
                         db.Students.Add(student);
                         db.SaveChanges();
                     }
+
+
+                    
+
+                    //Excel.Application application = new Excel.Application();
+                    //Excel.Workbook workbook = application.Workbooks.Open(path);
+                    //Excel.Worksheet worksheet = workbook.ActiveSheet;
+                    //Excel.Range range = worksheet.UsedRange;
+
+                    
+                    //for (int row = 2; row <= range.Rows.Count; row++)
+                    //{
+                    //    Students student = new Students();
+                    //    student.StudentSchoolID = ((Excel.Range)range.Cells[row, 1]).Text;
+                    //    student.FirstName = ((Excel.Range)range.Cells[row, 2]).Text;
+                    //    student.LastName = ((Excel.Range)range.Cells[row, 3]).Text;
+                    //    student.Date = DateTime.Now;
+                    //    student.YearnSection = ((Excel.Range)range.Cells[row, 4]).Text;
+                    //    students.Add(student);
+                    //    db.Students.Add(student);
+                    //    db.SaveChanges();
+                    //}
 
                     return View();
                 }
@@ -191,6 +220,55 @@ namespace OnlineVotingAndroid.Controllers
                 }
             }
         }
+
+        //[HttpPost]
+        //public ActionResult ImportStudent(HttpPostedFileBase excelfile)
+        //{
+        //    if (excelfile.ContentLength == 0 || excelfile == null)
+        //    {
+        //        ViewBag.Error = "Please select a valid excel file";
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        if (excelfile.FileName.EndsWith("xls") || excelfile.FileName.EndsWith("xlsx"))
+        //        {
+        //            string path = Server.MapPath("/Upload/" + excelfile.FileName);
+
+        //            if (System.IO.File.Exists(path))
+        //            {
+        //                System.IO.File.Delete(path);
+        //            }
+        //            excelfile.SaveAs(path);
+
+        //            Excel.Application application = new Excel.Application();
+        //            Excel.Workbook workbook = application.Workbooks.Open(path);
+        //            Excel.Worksheet worksheet = workbook.ActiveSheet;
+        //            Excel.Range range = worksheet.UsedRange;
+
+        //            List<Students> students = new List<Students>();
+        //            for (int row = 2; row <= range.Rows.Count; row++)
+        //            {
+        //                Students student = new Students();
+        //                student.StudentSchoolID = ((Excel.Range)range.Cells[row, 1]).Text;
+        //                student.FirstName = ((Excel.Range)range.Cells[row, 2]).Text;
+        //                student.LastName = ((Excel.Range)range.Cells[row, 3]).Text;
+        //                student.Date = DateTime.Now;
+        //                student.YearnSection = ((Excel.Range)range.Cells[row, 4]).Text;
+        //                students.Add(student);
+        //                db.Students.Add(student);
+        //                db.SaveChanges();
+        //            }
+
+        //            return View();
+        //        }
+        //        else
+        //        {
+        //            ViewBag.Error = "Something went wrong";
+        //            return View("Index");
+        //        }
+        //    }
+        //}
 
         public ActionResult SetStudent()
         {

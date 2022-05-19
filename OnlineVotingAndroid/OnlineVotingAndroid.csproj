@@ -179,6 +179,10 @@
     <Compile Include="Migrations\202205161657178_yearandsection.designer.cs">
       <DependentUpon>202205161657178_yearandsection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205180817067_platforms.cs" />
+    <Compile Include="Migrations\202205180817067_platforms.designer.cs">
+      <DependentUpon>202205180817067_platforms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\APIModels\APIVotes.cs" />
     <Compile Include="Models\APIModels\CandidatesAPI.cs" />
@@ -336,6 +340,7 @@
     <Content Include="MyLayout\images\logo-text.png" />
     <Content Include="MyLayout\images\logo.png" />
     <Content Include="MyLayout\images\logo.svg" />
+    <Content Include="MyLayout\images\logobnhs.jpg" />
     <Content Include="MyLayout\images\product\1.jpg" />
     <Content Include="MyLayout\images\product\2.jpg" />
     <Content Include="MyLayout\images\product\3.jpg" />
@@ -4351,6 +4356,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Upload\background.jpg" />
+    <Content Include="Upload\logobnhs.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -4431,6 +4437,9 @@
     <Content Include="Views\_YearAndSection\Details.cshtml" />
     <Content Include="Views\_YearAndSection\Edit.cshtml" />
     <Content Include="Views\_YearAndSection\Index.cshtml" />
+    <Content Include="Views\Candidates\AlreadyVoted.cshtml" />
+    <Content Include="Views\Votes\AlreadyVoted.cshtml" />
+    <Content Include="Views\Votes\Remaining.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4458,6 +4467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205161657178_yearandsection.resx">
       <DependentUpon>202205161657178_yearandsection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205180817067_platforms.resx">
+      <DependentUpon>202205180817067_platforms.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

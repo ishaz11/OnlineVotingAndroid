@@ -21,6 +21,31 @@ namespace OnlineVotingAndroid.Controllers
             return View(votes.ToList());
         }
 
+        public ActionResult AlreadyVoted()
+        {
+            var activeVotes = db.Votes.Where(x => x.Election.IsActive == true);
+            var students = db.Students.Where(x => x.isEnable == true);
+            ViewBag.alreadyVoted = students.Where(x => activeVotes.Any(a => a.StudentID == x.StudentID));
+            //ViewBag.alreadyVoted = from s in students
+            //                   join v in db.Votes on s.StudentID equals v.StudentID
+            //                   where v.Election.IsActive == true
+            //                   select s;
+                               
+
+
+
+            var votes = db.Votes.Include(v => v.Candidates).Include(v => v.Election).Include(v => v.Students).Where(x => x.Election.IsActive == true);
+            return View();
+        }
+
+        public ActionResult Remaining()
+        {
+            var students = db.Students.Where(x => x.isEnable == true);
+            var activeVotes = db.Votes.Where(x => x.Election.IsActive == true);
+            ViewBag.alreadyVoted = students.Where(v => !activeVotes.Any(s => s.StudentID == v.StudentID ));
+            return View();
+        }
+
         // GET: Votes/Details/5
         public ActionResult Details(int? id)
         {
