@@ -23,10 +23,18 @@ namespace OnlineVotingAndroid.Controllers
         }
 
         [Route("api/GetCandidateList")]
-        public IHttpActionResult GetCandidateList()
+        public IHttpActionResult GetCandidateList(int StudentID)
         {
-            var candidates = db.Candidates.Include(c => c.Position).Where(c => c.Position.Election.IsActive == true).Include(c => c.Students);
-            var listCandidates = from c in candidates
+            var student = db.Students.Find(StudentID);
+
+            var candidates = db.Candidates.Include(c => c.Position).Where(c => c.Position.Election.IsActive == true).Include(c => c.Students).ToList();
+
+            var filteredCan = from x in candidates
+                              where x.Position.Representative == true && x.Students.YearAndSectionID != student.YearAndSectionID
+                              select x;
+            candidates.Remove((Candidate)filteredCan);
+
+            var listCandidates = from c in filteredCan
                                  join ptl in db.PartyListMembers on c.StudentID equals ptl.StudentID into table1
                                  from tbl in table1.DefaultIfEmpty()
                                  select new

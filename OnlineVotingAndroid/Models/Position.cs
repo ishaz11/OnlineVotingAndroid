@@ -25,5 +25,8 @@ namespace OnlineVotingAndroid.Models
         [Display(Name = "Count")]
         public int Count { get; set; }
 
+        public int? exclusive { get; set; }
+
+        public bool Representative { get; set; }
     }
 }

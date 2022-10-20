@@ -155,6 +155,7 @@
     <Compile Include="Controllers\ElectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartyListMembersController.cs" />
+    <Compile Include="Controllers\PartyLists1Controller.cs" />
     <Compile Include="Controllers\PartyListsController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\SamplePersonsController.cs" />
@@ -183,6 +184,22 @@
     <Compile Include="Migrations\202205180817067_platforms.designer.cs">
       <DependentUpon>202205180817067_platforms.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205220153066_add photo.cs" />
+    <Compile Include="Migrations\202205220153066_add photo.designer.cs">
+      <DependentUpon>202205220153066_add photo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205220200571_remove photo.cs" />
+    <Compile Include="Migrations\202205220200571_remove photo.designer.cs">
+      <DependentUpon>202205220200571_remove photo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205220303456_exclusiv.cs" />
+    <Compile Include="Migrations\202205220303456_exclusiv.designer.cs">
+      <DependentUpon>202205220303456_exclusiv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205220307371_add exl.cs" />
+    <Compile Include="Migrations\202205220307371_add exl.designer.cs">
+      <DependentUpon>202205220307371_add exl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\APIModels\APIVotes.cs" />
     <Compile Include="Models\APIModels\CandidatesAPI.cs" />
@@ -199,6 +216,7 @@
     <Compile Include="Models\StudentPhoto.cs" />
     <Compile Include="Models\Students.cs" />
     <Compile Include="Models\StudentsAndParty.cs" />
+    <Compile Include="Models\TestPositionsController.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserChange.cs" />
     <Compile Include="Models\Vote.cs" />
@@ -4355,6 +4373,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\table2csv.js" />
     <Content Include="Upload\background.jpg" />
     <Content Include="Upload\logobnhs.jpg" />
     <Content Include="Web.config" />
@@ -4440,6 +4459,11 @@
     <Content Include="Views\Candidates\AlreadyVoted.cshtml" />
     <Content Include="Views\Votes\AlreadyVoted.cshtml" />
     <Content Include="Views\Votes\Remaining.cshtml" />
+    <Content Include="Views\TestPositions\Create.cshtml" />
+    <Content Include="Views\TestPositions\Delete.cshtml" />
+    <Content Include="Views\TestPositions\Details.cshtml" />
+    <Content Include="Views\TestPositions\Edit.cshtml" />
+    <Content Include="Views\TestPositions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4470,6 +4494,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205180817067_platforms.resx">
       <DependentUpon>202205180817067_platforms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205220153066_add photo.resx">
+      <DependentUpon>202205220153066_add photo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205220200571_remove photo.resx">
+      <DependentUpon>202205220200571_remove photo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205220303456_exclusiv.resx">
+      <DependentUpon>202205220303456_exclusiv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205220307371_add exl.resx">
+      <DependentUpon>202205220307371_add exl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

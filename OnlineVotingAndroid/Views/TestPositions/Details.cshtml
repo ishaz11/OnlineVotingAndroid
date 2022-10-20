@@ -1,0 +1,66 @@
+﻿@model OnlineVotingAndroid.Models.Position
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Position</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Election.ElectionName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Election.ElectionName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PositionName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PositionName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Count)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Count)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.exclusive)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.exclusive)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Representative)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Representative)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PositionId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

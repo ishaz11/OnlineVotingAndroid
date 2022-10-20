@@ -21,6 +21,8 @@ namespace OnlineVotingAndroid.Models
         [ForeignKey("StudentID")]
         public virtual Students Students { get; set; }
 
+      
+
 
     }
 }

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<OnlineVotingAndroid.Models.Position>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Election.ElectionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PositionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.exclusive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Representative)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Election.ElectionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exclusive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Representative)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.PositionId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.PositionId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.PositionId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

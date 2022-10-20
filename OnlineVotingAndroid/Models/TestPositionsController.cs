@@ -6,22 +6,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using OnlineVotingAndroid.Models;
 
-namespace OnlineVotingAndroid.Controllers
+namespace OnlineVotingAndroid.Models
 {
-    public class PositionsController : Controller
+    public class TestPositionsController : Controller
     {
         private OnlineVotingDbContext db = new OnlineVotingDbContext();
 
-        // GET: Positions
+        // GET: TestPositions
         public ActionResult Index()
         {
-            var positions = db.Positions.Include(p => p.Election).Where(p => p.Election.IsActive == true);
+            var positions = db.Positions.Include(p => p.Election);
             return View(positions.ToList());
         }
 
-        // GET: Positions/Details/5
+        // GET: TestPositions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,34 +35,32 @@ namespace OnlineVotingAndroid.Controllers
             return View(position);
         }
 
-        // GET: Positions/Create
+        // GET: TestPositions/Create
         public ActionResult Create()
         {
             ViewBag.ElectionID = new SelectList(db.Elections, "ElectionID", "ElectionName");
             return View();
         }
 
-        // POST: Positions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // POST: TestPositions/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Position position)
+        public ActionResult Create([Bind(Include = "PositionId,ElectionID,PositionName,Count,exclusive,Representative")] Position position)
         {
-            
             if (ModelState.IsValid)
             {
-                position.ElectionID = db.Elections.Where(x=> x.IsActive == true).Select(x=>x.ElectionID).FirstOrDefault();
                 db.Positions.Add(position);
                 db.SaveChanges();
-                return RedirectToAction("ActiveElection", "Candidates");
+                return RedirectToAction("Index");
             }
 
             ViewBag.ElectionID = new SelectList(db.Elections, "ElectionID", "ElectionName", position.ElectionID);
             return View(position);
         }
 
-        // GET: Positions/Edit/5
+        // GET: TestPositions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,24 +76,24 @@ namespace OnlineVotingAndroid.Controllers
             return View(position);
         }
 
-        // POST: Positions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // POST: TestPositions/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PositionId,ElectionID,PositionName,Count")] Position position)
+        public ActionResult Edit([Bind(Include = "PositionId,ElectionID,PositionName,Count,exclusive,Representative")] Position position)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(position).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ActiveElection", "Candidates");
+                return RedirectToAction("Index");
             }
             ViewBag.ElectionID = new SelectList(db.Elections, "ElectionID", "ElectionName", position.ElectionID);
             return View(position);
         }
 
-        // GET: Positions/Delete/5
+        // GET: TestPositions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,7 +108,7 @@ namespace OnlineVotingAndroid.Controllers
             return View(position);
         }
 
-        // POST: Positions/Delete/5
+        // POST: TestPositions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

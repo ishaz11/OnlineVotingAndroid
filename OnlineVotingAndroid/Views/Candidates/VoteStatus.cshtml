@@ -8,7 +8,7 @@
     <div class="container-fluid">
 
         <!-- row -->
-        <div class="row">
+        <div class="row" id="thisp">
 
 
             @foreach (var position in ViewBag.positions)
@@ -32,9 +32,9 @@
                                                 Partylist
                                             </th>
                                             <th>
-                                                Votes 
+                                                Votes
                                             </th>
-        
+
                                             @*<th></th>*@
                                         </tr>
                                     </thead>
@@ -84,7 +84,32 @@
 
 
 
+
         </div>
+        <button href="#" id="print" class="btn mb-1 btn-primary">Print</button>
     </div>
 </div>
+<script src="//code.jquery.com/jquery.min.js"></script>
+@*<script src="/Content/Print/jquery.table2excel.js"></script>
+    <script src="/Content/Print/jquery.table2excel.min.js"></script>*@
+<script src="/Scripts/table2csv.js"></script>
+@*<script src="~/Scripts/table2csv.js"></script>*@
+<script>
 
+
+
+
+    $(document).ready(function () {
+        $('#thisp').DataTable();
+
+    });
+
+    $('.btn').click(function () {
+        var printme = document.getElementById('thisp');
+        var wme = window.open("","","width=900,height=700");
+        wme.document.write(printme.outerHTML);
+        wme.document.close();
+        wme.focus();
+        wme.print();
+    });
+</script>
